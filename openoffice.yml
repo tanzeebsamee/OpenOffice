@@ -7,7 +7,7 @@
 
   tasks:
 
-    - name: Installing OpenOffice 
+ #   - name: Installing OpenOffice 
 
  # #    command: "{{ item }}"
 
@@ -26,13 +26,15 @@
     url: https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/en-US/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
     dest: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
     
-       - name : Extracting Open Office
+   tasks:
+   - name : Extracting Open Office
       
     unarchive:
     src: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
     dest: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US
     
-       - name : Installing the .deb File 
+   tasks:
+   - name : Installing the .deb File 
      command : cd /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US/en-US/DEBS
      command : sudo dpkg -i *.deb
      command : cd desktop-integration
