@@ -9,15 +9,36 @@
 
     - name: Installing OpenOffice 
 
-      command: "{{ item }}"
+ # #    command: "{{ item }}"
 
-      with_items :
+  #    with_items :
 
-       - apt-get install -y wget
-       - wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/en-US/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
-       - tar xvf Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
-       - cd en-US/DEBS
-       - sudo dpkg -i  *.deb
-       - cd desktop-integration
-       - sudo dpkg -i *deb
+    #   - apt-get install -y wget
+     #  - wget https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/en-US/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
+      # - tar xvf Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
+      # - cd en-US/DEBS
+      # - sudo dpkg -i  *.deb
+      # - cd desktop-integration
+      # - sudo dpkg -i *deb
+       
+       - name: Downloading Apache Open Office
+  get_url:
+    url: https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.6/binaries/en-US/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
+    dest: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
+    
+       - name : Extracting Open Office
+      
+  unarchive:
+    src: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US.tar.gz
+    dest: /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US
+    
+       - name : Installing the .deb File 
+       command : cd /home/test/Desktop/Apache_OpenOffice_4.1.6_Linux_x86-64_install-deb_en-US/en-US/DEBS
+       command : sudo dpkg -i *.deb
+       command : cd desktop-integration
+       command : sudo dpkg -i *deb
+       
+  
+       
+       
        
